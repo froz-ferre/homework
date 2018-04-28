@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2, ElementRef } from '@angular/core';
 import { data } from './model/jshots';
 
 @Component({
@@ -7,12 +7,16 @@ import { data } from './model/jshots';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  hovered = false;
+
   shots = data;
 
-  hoverToggler($event) {
-    return !this.hovered;
-  }
+  constructor(private renderer: Renderer2, private el: ElementRef) { }
 
-  constructor() { }
+  onShotHover(event, shot) {
+    event.target.src = shot.avatar;
+    console.log(event.target);
+  }
+  onShotOver(event, shot) {
+    event.target.src = shot.thumbnail;
+  }
 }
