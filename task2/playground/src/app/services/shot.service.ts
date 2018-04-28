@@ -16,3 +16,5 @@ export class ShotService {
     .subscribe((res: Response) => res.json());
   }
 }
+
+// CYKAAAAAAAAA!!!!
