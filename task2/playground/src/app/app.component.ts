@@ -1,5 +1,6 @@
 import { Component, Renderer2, ElementRef } from '@angular/core';
 import { data } from './model/jshots';
+import { ShotService } from './services/shot.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
 
   shots = data;
 
-  constructor(private renderer: Renderer2, private el: ElementRef) { }
+  constructor(private s: ShotService) { }
 
   onShotHover(event, shot) {
     event.target.src = shot.avatar;
