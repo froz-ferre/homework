@@ -1,4 +1,4 @@
-export class Shot {
+export class Shot extends Object {
     constructor (
         public id: number,
         public title: string,
@@ -8,5 +8,7 @@ export class Shot {
         public thumbnail: string,
         public platforms: string,
         public avatar_content_type: string
-    ) { }
+    ) {
+        super();
+    }
 }
