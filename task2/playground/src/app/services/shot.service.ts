@@ -16,11 +16,10 @@ export class ShotService {
   }
 
   getShot(id: number): Observable<Shot> {
-    return this.http.get<Shot>('../../assets/shots.json')
-    .pipe(
-    filter(shot => shot.id === id));
-    // .pipe(map(d => d.json()).filter(data => data.id === id));
-    //  .filter((shot: Shot) => shot.id === id);
+    return this.http.get<Shot[]>('../../assets/shots.json')
+    .pipe(map(data => {
+       return data.find(el => el.id === id);
+    }));
   }
 }
 
