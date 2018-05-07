@@ -1,26 +1,26 @@
 import { Shot } from './../model/shot';
-import { data } from './../model/jshots';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+import { map, filter } from 'rxjs/operators';;
 
 @Injectable()
 export class ShotService {
 
-  shots;
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) {
-    // http.get('../../assets/shots.json').subscribe(r => console.log(r.toString()));
-   }
 
-  getShots(): Observable<any> {
-    return this.http.get('../../assets/shots.json');
-    // .map((res: Response) => res.json())
-    // .subscribe(data => {
-    //   this.shots.push(data);
-    // });
-    // .map((res: Response) => res.json());
+  getShots(): Observable<Shot[]> {  // old method
+    return this.http.get<Shot[]>('../../assets/shots.json')
+    .pipe();
+  }
+
+  getShot(id: number): Observable<Shot> {
+    return this.http.get<Shot>('../../assets/shots.json')
+    .pipe(
+    filter(shot => shot.id === id));
+    // .pipe(map(d => d.json()).filter(data => data.id === id));
+    //  .filter((shot: Shot) => shot.id === id);
   }
 }
 

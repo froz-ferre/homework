@@ -1,10 +1,11 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div *ngFor="let shot of shots" style="text-align:center">
+<!-- The content below is only a placeholder and can be replaced.-->
+<!-- <div *ngFor="let shot of shots" style="text-align:center">
   <hr />
   <h1>{{shot.title}}</h1>
   <img (mouseover)="onShotHover($event, shot)" 
        (mouseout)="onShotOver($event, shot)" 
        src="{{shot.thumbnail}}" 
        alt="{{shot.title}}">
-</div>
+</div> -->
 
+<app-shot | async>Loading...</app-shot>
