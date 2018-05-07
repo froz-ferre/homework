@@ -1,5 +1,6 @@
-import { data } from '../model/jshots';
+import { ShotService } from './../services/shot.service';
 import { Component, OnInit } from '@angular/core';
+import { Shot } from '../model/shot';
 
 
 @Component({
@@ -9,12 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShotComponent implements OnInit {
 
-  constructor() { }
-  shot = data[0];
+  shot: any;
+
+  constructor(private shotService: ShotService) { }
 
   // shot: Shot = this.shotService.getShot(445);
 
   ngOnInit() {
-    console.log(this.shot);
+    // this.shot = data[2];
+    this.getShotById(448);
+    // console.log(this.shot);
+  }
+  getShotById(id: number) {
+    this.shotService.getShot(id).subscribe(shot => this.shot = shot);
   }
 }

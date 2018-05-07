@@ -1,5 +1,4 @@
 import { Component, Renderer2, ElementRef, OnInit } from '@angular/core';
-import { data } from './model/jshots';
 import { ShotService } from './services/shot.service';
 import { Shot } from './model/shot';
 
@@ -10,23 +9,26 @@ import { Shot } from './model/shot';
 })
 export class AppComponent implements OnInit {
 
-  shots; // = data;
+  shots: Shot[];
 
-  constructor(private ss: ShotService) {
-    this.ss.getShots()
-    .subscribe(shots => {
-      this.shots = shots;
-    });
-  }
+  constructor(private shotService: ShotService) { }
 
   ngOnInit() {
-    console.log(this.shots);
+    this.getShots();
   }
 
-  onShotHover(event, shot) {
+  getShots(): void {
+    this.shotService.getShots()
+        .subscribe(shots => {
+          this.shots = shots;
+        });
+  }
+
+  onShotHover(event, shot): void  {
     event.target.src = shot.avatar;
   }
-  onShotOver(event, shot) {
+
+  onShotOver(event, shot): void  {
     event.target.src = shot.thumbnail;
   }
 }
