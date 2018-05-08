@@ -1,6 +1,6 @@
 import { Component, Renderer2, ElementRef, OnInit } from '@angular/core';
-import { ShotService } from './services/shot.service';
-import { Shot } from './model/shot';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,26 +9,16 @@ import { Shot } from './model/shot';
 })
 export class AppComponent implements OnInit {
 
-  shots: Shot[];
+  constructor(private location: Location,
+              private router:   Router) { }
 
-  constructor(private shotService: ShotService) { }
+  ngOnInit() { }
 
-  ngOnInit() {
-    this.getShots();
+  goBack() {
+    this.location.back();
   }
 
-  getShots(): void {
-    this.shotService.getShots()
-        .subscribe(shots => {
-          this.shots = shots;
-        });
-  }
-
-  onShotHover(event, shot): void  {
-    event.target.src = shot.avatar;
-  }
-
-  onShotOver(event, shot): void  {
-    event.target.src = shot.thumbnail;
+  shotsRout() {
+    this.router.navigate([`/shots`]);
   }
 }
