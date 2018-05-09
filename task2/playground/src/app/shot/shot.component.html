@@ -10,17 +10,19 @@
     <img src="{{shot?.thumbnail}}" alt="blah">
   </div> -->
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-3 shot-container">
+  <!-- (click)="onChangeId(shotItem.id)" -->
+
+ 
+    
+      <!-- <div class="col-3 shot-container">
         <div class="shot-card" *ngFor="let shotItem of shotList">
           <img src="{{shotItem.thumbnail}}" 
           alt="shot"
-          (click)="onChangeId(shotItem.id)"
+          [routerLink]="['../', shotItem.id]"
           />
         </div>
-      </div>
-      <div class="col-9">
+      </div> -->
+      <div class="col-9 shot-content">
         <h1 class="text-warning text-center">{{shot?.title}}</h1>
         <img src="{{shot?.avatar}}" 
              alt="{{shot?.title}}" 
@@ -28,5 +30,4 @@
              (dblclick)="openFullShot()"
              />
       </div>
-    </div>
-  </div>
+    

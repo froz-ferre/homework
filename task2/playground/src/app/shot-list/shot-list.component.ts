@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Shot } from '../model/shot';
 import { ShotService } from '../services/shot.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shot-list',
@@ -11,7 +12,8 @@ export class ShotListComponent implements OnInit {
 
   shots: Shot[];
 
-  constructor(private shotService: ShotService) { }
+  constructor(private shotService: ShotService,
+              private router: Router) { }
 
   ngOnInit() {
     this.getShots();

@@ -11,20 +11,19 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./shot.component.css']
 })
 export class ShotComponent implements OnInit {
-
-  shotList: Shot[];
   shot: Shot;
   shotId: number;
 
   constructor(private shotService:    ShotService,
               private activatedRoute: ActivatedRoute,
               private router:         Router) {
-    activatedRoute.params.subscribe(param => this.shotId = +param['shotID']);
+    activatedRoute.params.subscribe(param => {
+      this.shotId = +param['shotID'];
+      this.getShotById(this.shotId);
+    });
   }
 
   ngOnInit() {
-    // get list of shots
-    this.shotService.getShots().subscribe(shots => this.shotList = shots);
     this.getShotById(this.shotId);
   }
   getShotById(id: number) {
