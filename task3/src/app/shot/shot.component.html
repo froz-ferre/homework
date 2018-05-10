@@ -1,0 +1,33 @@
+<!-- <div style="text-align:center">
+    <hr />
+    <a class="btn btn-warning" (click)="goBack()" >&laquo;Back</a>
+    <h1>{{shot?.title}}</h1>
+    <ul>
+      <li>{{shot?.description}}</li>
+      <li>{{shot?.platforms}}</li>
+      <li><a href="{{shot?.link}}" target="_blank">Link</a></li>
+    </ul>
+    <img src="{{shot?.thumbnail}}" alt="blah">
+  </div> -->
+
+  <!-- (click)="onChangeId(shotItem.id)" -->
+
+ 
+    
+      <!-- <div class="col-3 shot-container">
+        <div class="shot-card" *ngFor="let shotItem of shotList">
+          <img src="{{shotItem.thumbnail}}" 
+          alt="shot"
+          [routerLink]="['../', shotItem.id]"
+          />
+        </div>
+      </div> -->
+      <div class="col-9 shot-content">
+        <h1 class="text-warning text-center">{{shot?.title}}</h1>
+        <img src="{{shot?.avatar}}" 
+             alt="{{shot?.title}}" 
+             class="shot-avatar" 
+             (dblclick)="openFullShot()"
+             />
+      </div>
+    
