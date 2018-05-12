@@ -6,6 +6,9 @@ import { ShotListComponent } from './shot-list.component';
 import { ShotComponent } from '../shot/shot.component';
 import { ShotFullComponent } from '../shot-full/shot-full.component';
 
+import { DownloadDirective } from '../directives/download.directive';
+
+
 const childrenRoutes: Routes = [
   {path: ':shotID', component: ShotComponent}
 ];
@@ -23,7 +26,8 @@ const routes: Routes = [
   declarations: [
     ShotListComponent,
     ShotComponent,
-    ShotFullComponent
+    ShotFullComponent,
+    DownloadDirective
   ]
 })
 export class ShotListModule { }

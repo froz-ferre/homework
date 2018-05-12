@@ -9,6 +9,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+// Возможно придется перенести директиву в shot-list.module
+
 @NgModule({
   declarations: [
     AppComponent,

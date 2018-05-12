@@ -1,5 +1,5 @@
 export class APIData {
-    shots: Array<any>;
+    shots: Shot[];
     total_pages: number;
     current_page: number;
   }

@@ -28,11 +28,11 @@ export class ShotListComponent implements OnInit {
         });
   }
 
-  onShotHover(event, shot): void  {
+  onShotHover(event, shot: Shot): void  {
     event.target.src = shot.avatar;
   }
 
-  onShotOver(event, shot): void  {
+  onShotOver(event, shot: Shot): void  {
     event.target.src = shot.thumbnail;
   }
 
