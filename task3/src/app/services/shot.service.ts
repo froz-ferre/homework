@@ -7,19 +7,30 @@ import { map, filter } from 'rxjs/operators';
 @Injectable()
 export class ShotService {
 
+  apiUrl = 'http://api.mobile.design/api/shots?page=1&per_page=450';
+
   constructor(private http: HttpClient) { }
 
-  getShots(): Observable<Shot[]> {  // old method
-    return this.http.get<APIData>('http://api.mobile.design/api/shots?page=1&per_page=450')
-    .pipe(map((data: APIData /* APIData */) => data.shots));
-    // data is object with keys:
-    // shots: array of shots,
-    // total_pages: number,
-    // current_page: number
+  getShotsStatus(): Observable<any> {
+    return this.http.get(this.apiUrl, {observe: 'events'});
   }
 
+  getShots(): Observable<any> {
+    return this.http.get<any>(this.apiUrl, {observe: 'events',
+                                            reportProgress: true});
+  }
+
+  // getShots(): Observable<Shot[]> {  // old method
+  //   return this.http.get<APIData>(this.apiUrl, )
+  //   .pipe(map((data: APIData /* APIData */) => data.shots));
+  //   // data is object with keys:
+  //   // shots: array of shots,
+  //   // total_pages: number,
+  //   // current_page: number
+  // }
+
   getShot(id: number): Observable<Shot> {
-    return this.http.get<APIData>('http://api.mobile.design/api/shots?page=1&per_page=450')
+    return this.http.get<APIData>(this.apiUrl)
     .pipe(map((data: APIData) => data.shots))
     .pipe(map((data: Shot[]) => {
        return data.find(el => el.id === id);

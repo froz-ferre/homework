@@ -1,11 +1,14 @@
 <div class="container-fluid mt-4">
+  <h1 class="text-warning text-center"
+    *ngIf="progr != 100"
+    >{{ progr + ' %' }}</h1>
   <div class="row">
     
     <template [ngTemplateOutlet]="idTemplate"
               *ngIf="router.url !== '/shots'">
     </template>
     <template [ngTemplateOutlet]="noIdTemplate"
-              *ngIf="router.url === '/shots'">
+              *ngIf="router.url === '/shots' && progr == 100">
     </template>
     <router-outlet></router-outlet>
   </div>
