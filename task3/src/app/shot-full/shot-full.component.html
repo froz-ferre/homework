@@ -2,6 +2,11 @@
 <div class="container">
   <h1 class="text-center text-warning">{{shot?.title}}</h1>
   <p>{{shot?.description}}</p>
+  <button class="btn btn-warning"
+    (click)="downloadFile()">
+    <i class="fa fa-download"></i> Download Image
+  </button>
+  <a href="" style="display: none;" #downloadHelper></a>
   <a href="{{shot?.link}}">Link to origin</a>      
   <img src="{{shot?.thumbnail}}" alt="" />     
   <p>{{shot?.platforms}}</p>      

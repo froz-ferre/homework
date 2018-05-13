@@ -21,7 +21,11 @@
               alt="{{shot.title}}">
           <div class="card-body">
             <h5 class="card-title">{{shot.title}}</h5>
-            <button appDownload class="btn btn-warning"><i class="fa fa-download"></i> Download</button>
+            <a  href="{{shot.thumbnail}}" 
+                download="{{shot.title}}.jpg"
+                class="btn btn-warning">
+              <i class="fa fa-download"></i> Download
+            </a>
           </div>
         </div>
       </div>
