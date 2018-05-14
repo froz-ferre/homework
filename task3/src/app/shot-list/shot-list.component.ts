@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Shot } from '../model/shot';
 import { ShotService } from '../services/shot.service';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { HttpEventType, HttpEvent } from '@angular/common/http';
 export class ShotListComponent implements OnInit {
 
   shots: Shot[];
-  progr = 0;
+  shotsLoaded = false;
 
   constructor(private shotService: ShotService,
               private router: Router) { }
@@ -27,11 +27,11 @@ export class ShotListComponent implements OnInit {
     this.shotService.getShots()
         .subscribe((event: HttpEvent<any>) => {
           if (event.type === HttpEventType.DownloadProgress) {
-            this.progr = Math.round(100 * event.loaded / 162532);
             console.log(event.loaded + ' loaded of ' + event.total);
           }
           if (event.type === HttpEventType.Response) {
             this.shots = event.body.shots.filter(shot => shot.id !== 424).reverse();
+            this.shotsLoaded = true;
           }
           // this.shots = res.filter(shot => shot.id !== 424).reverse();
         });

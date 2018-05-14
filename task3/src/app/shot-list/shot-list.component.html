@@ -1,18 +1,41 @@
 <div class="container-fluid mt-4">
-  <h1 class="text-warning text-center"
-    *ngIf="progr != 100"
-    >{{ progr + ' %' }}</h1>
   <div class="row">
     
-    <template [ngTemplateOutlet]="idTemplate"
+    
+    <template [ngTemplateOutlet]="noIdTemplate"
+              *ngIf="router.url === '/shots' && shotsLoaded">
+    </template>
+
+      <!-- Шаблон для /shots -->
+
+      <template [ngTemplateOutlet]="idTemplate"
               *ngIf="router.url !== '/shots'">
     </template>
-    <template [ngTemplateOutlet]="noIdTemplate"
-              *ngIf="router.url === '/shots' && progr == 100">
-    </template>
+
+    <!-- Анимация загрузки -->
+
+    <div class="overlay-loader" *ngIf="!shotsLoaded">
+        <div class="loader">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+
+    <!-- Якорь для бесконечной подгрузки -->
+    <a name="loadMore"                                                                                                                                                            ></a>
+
+    <!-- Роут компоненты -->
     <router-outlet></router-outlet>
+
   </div>
 </div>
+
+<!-- Шаблоны -->
 
 <ng-template #noIdTemplate>
     <div *ngFor="let shot of shots" class="sm-12 col-4" style="text-align:center">
