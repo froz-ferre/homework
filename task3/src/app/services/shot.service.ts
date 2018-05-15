@@ -1,19 +1,18 @@
 import { Shot, APIData } from './../model/shot';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map, filter } from 'rxjs/operators';
 
 @Injectable()
 export class ShotService {
 
-  apiUrl = 'http://api.mobile.design/api/shots?page=1&per_page=450';
+  apiUrlFull = 'http://api.mobile.design/api/shots?page=1&per_page=450';
+  apiUrl     = 'http://api.mobile.design/api/shots';
+  apiPage = 1;
+  total_pages: number;
 
   constructor(private http: HttpClient) { }
-
-  getShotsStatus(): Observable<any> {
-    return this.http.get(this.apiUrl, {observe: 'events'});
-  }
 
   getShots(): Observable<any> {
     return this.http.get<any>(this.apiUrl, {observe: 'events',
@@ -30,7 +29,7 @@ export class ShotService {
   // }
 
   getShot(id: number): Observable<Shot> {
-    return this.http.get<APIData>(this.apiUrl)
+    return this.http.get<APIData>(this.apiUrlFull)
     .pipe(map((data: APIData) => data.shots))
     .pipe(map((data: Shot[]) => {
        return data.find(el => el.id === id);
@@ -38,6 +37,5 @@ export class ShotService {
     ));
   }
 }
-
 
 // https://www.develodesign.co.uk/news/angular/using-mouse-events-in-angular-4-5/
