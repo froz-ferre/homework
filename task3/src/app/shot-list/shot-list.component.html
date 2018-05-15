@@ -3,7 +3,7 @@
     
     
     <template [ngTemplateOutlet]="noIdTemplate"
-              *ngIf="router.url === '/shots' && shotsLoaded">
+              *ngIf="router.url === '/shots'">
     </template>
 
       <!-- Шаблон для /shots -->
@@ -27,8 +27,8 @@
       </div>
 
     <!-- Якорь для бесконечной подгрузки -->
-    <a name="loadMore"                                                                                                                                                            ></a>
-
+    <a name="loadMore" #loadMore id="more"></a>
+      
     <!-- Роут компоненты -->
     <router-outlet></router-outlet>
 

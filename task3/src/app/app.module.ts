@@ -3,13 +3,12 @@ import { Shot } from './model/shot';
 
 // import { BrowserAnimationModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 
-// Возможно придется перенести директиву в shot-list.module
+import { AppComponent } from './app.component';
+import { ShotApiInterceptor } from './interceptors/shot.api.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,11 @@ import { AppComponent } from './app.component';
     AppRoutingModule
     // BrowserAnimationModule
   ],
-  providers: [ShotService],
+  providers: [ShotService,
+    {provide: HTTP_INTERCEPTORS,
+    useClass: ShotApiInterceptor,
+    multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
