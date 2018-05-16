@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShotApiInterceptor } from './interceptors/shot.api.interceptor';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,7 @@ import { ShotApiInterceptor } from './interceptors/shot.api.interceptor';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
     // BrowserAnimationModule
   ],
   providers: [ShotService,

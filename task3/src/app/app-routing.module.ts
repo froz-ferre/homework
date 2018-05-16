@@ -5,13 +5,18 @@ import { ShotListComponent } from './shot-list/shot-list.component';
 import { ShotComponent } from './shot/shot.component';
 import { ShotFullComponent } from './shot-full/shot-full.component';
 
+import { CustomPipesModule } from './pipes/custom-pipes/custom-pipes.module';
+
 const routes: Routes = [
     {path: '', redirectTo: '/shots', pathMatch: 'full'},
     {path: 'shots', loadChildren: './shot-list/shot-list.module#ShotListModule'}
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [
+        CustomPipesModule,
+        RouterModule.forRoot(routes)
+    ],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
