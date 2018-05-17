@@ -7,6 +7,7 @@ import { ShotComponent } from '../shot/shot.component';
 import { ShotFullComponent } from '../shot-full/shot-full.component';
 
 import { DownloadDirective } from '../directives/download.directive';
+import { CustomPipesModule } from '../pipes/custom-pipes/custom-pipes.module';
 
 
 const childrenRoutes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    CustomPipesModule,
     CommonModule,
     RouterModule.forChild(routes)
   ],

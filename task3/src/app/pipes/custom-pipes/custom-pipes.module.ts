@@ -11,6 +11,10 @@ import { OrderByPipe } from '../order-by.pipe';
   declarations: [
     FilterPipe,
     OrderByPipe
+  ],
+  exports: [
+    FilterPipe,
+    OrderByPipe
   ]
 })
 export class CustomPipesModule { }

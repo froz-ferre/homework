@@ -8,5 +8,4 @@ export class OrderByPipe implements PipeTransform {
   transform(value: any, args?: any): any {
     return null;
   }
-
 }

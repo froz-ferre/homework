@@ -12,19 +12,7 @@
               *ngIf="router.url !== '/shots'">
     </template>
 
-    <!-- Анимация загрузки -->
-
-    <div class="overlay-loader" *ngIf="!shotsLoaded">
-        <div class="loader">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
+ 
 
     <!-- Якорь для бесконечной подгрузки -->
     <a name="loadMore" #loadMore id="more"></a>
@@ -55,6 +43,7 @@
           </div>
         </div>
       </div>
+      <template [ngTemplateOutlet]="loader"></template>
 </ng-template>
 
 <ng-template #idTemplate>
@@ -64,7 +53,22 @@
           alt="shot"
           [routerLink]="[shot.id]"
           />
-          <p>{{shot.id | filter }}</p>
         </div>
+        <template [ngTemplateOutlet]="loader"></template>
       </div>
+</ng-template>
+
+<ng-template #loader>
+   <!-- Анимация загрузки -->
+   <div class="overlay-loader" *ngIf="!shotsLoaded">
+    <div class="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
 </ng-template>
