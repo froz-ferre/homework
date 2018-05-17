@@ -3,7 +3,7 @@
 ## 1. Работа с httpClient 
 
 Сделайте получение списка шотов с сервера, используя httpClient. Можете использовать для этого запрос 
-http://api.mobile.design/api/shots?page=1&per_page=24 (⭐️) heavy_check_mark
+http://api.mobile.design/api/shots?page=1&per_page=24 (⭐️) :heavy_check_mark:
 
 Добавьте кнопку, позволяющую пользователю скачать картинку шота. Используйте для этого AJAX запрос (хотя, если честно, тут можно обойтись и без него)(⭐️)
 
