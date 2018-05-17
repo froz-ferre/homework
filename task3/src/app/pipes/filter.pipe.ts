@@ -5,9 +5,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    const result = value + 1000;
-    return result;
+  transform(values: Array<any>, func: Function): any {
+    const filteredArray = [];
+    values.forEach(value => {
+      if (func(value) === true) {
+        filteredArray.push(value);
+      }
+    });
+    return filteredArray;
   }
 
 }

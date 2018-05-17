@@ -69,5 +69,4 @@ export class ShotListComponent implements OnInit {
   onShotOver(event, shot: Shot): void  {
     event.target.src = shot.thumbnail;
   }
-
 }
