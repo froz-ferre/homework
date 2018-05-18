@@ -49,6 +49,7 @@
 <ng-template #idTemplate>
     <div class="col-3 shot-container">
         <div class="shot-card" *ngFor="let shot of shots">
+          <p>{{ shots | map : someMappingFunctionForExample }}</p>
           <img src="{{shot.thumbnail}}" 
           alt="shot"
           [routerLink]="[shot.id]"

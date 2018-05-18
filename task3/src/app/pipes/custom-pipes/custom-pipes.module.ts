@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { FilterPipe } from '../filter.pipe';
 import { OrderByPipe } from '../order-by.pipe';
+import { MapPipe } from '../map.pipe';
 
 @NgModule({
   imports: [
@@ -10,11 +11,13 @@ import { OrderByPipe } from '../order-by.pipe';
   ],
   declarations: [
     FilterPipe,
-    OrderByPipe
+    OrderByPipe,
+    MapPipe
   ],
   exports: [
     FilterPipe,
-    OrderByPipe
+    OrderByPipe,
+    MapPipe
   ]
 })
 export class CustomPipesModule { }

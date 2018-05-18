@@ -62,6 +62,15 @@ export class ShotListComponent implements OnInit {
       );
   }
 
+  someMappingFunctionForExample(shots: Shot[]) {
+    // just function to show pipes work
+    return shots.map(shot => {
+      return {
+        id: `[${shot.id}]`
+      }
+    });
+  }
+
   onShotHover(event, shot: Shot): void  {
     event.target.src = shot.avatar;
   }
